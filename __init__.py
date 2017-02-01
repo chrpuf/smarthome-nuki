@@ -29,7 +29,7 @@ import re
 
 
 logger = logging.getLogger('')
-discoveredNukiLocks = []
+pairedNukiLocks = []
 nukiLocks = {}
 nukiLocksBatteryState = {}
 
@@ -138,12 +138,12 @@ class Nuki():
         else:
             logger.warning('No callback ip set. Automatic Nuki lock status updates not available.')
 
-        #Getting Nuki Locks found nearby the Nuki Bridge
-        response = self._apiCall(self._baseURL, 'info', '', self._token, '', '', '')
-        for r in response['scanResults']:
-            discoveredNukiLocks.append(str(r['nukiId']))
-        logger.debug('Found Nuki Locks near the bridge:')
-        logger.debug(discoveredNukiLocks)
+        #Getting Nuki Locks already paired with Nuki Bridge
+        response = self._apiCall(self._baseURL, 'list', '', self._token, '', '', '')
+        for r in response:
+            pairedNukiLocks.append(str(r['nukiId']))
+            logger.info('Paired Nuki Lock found: Name: ' + r['name'] ', nukiId: ' + str(r['nukiId']))
+        logger.debug(pairedNukiLocks)
 
     def run(self):
         self.alive = True
@@ -163,7 +163,7 @@ class Nuki():
     def parse_item(self, item):
         if 'nukiId' in item.conf:
             logger.debug("parse item: {0}".format(item))
-            if item.conf['nukiId'] in discoveredNukiLocks:
+            if item.conf['nukiId'] in pairedNukiLocks:
                 nukiLocks[item] = item.conf['nukiId']
                 return self.update_item
             else:
