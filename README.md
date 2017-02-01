@@ -62,4 +62,5 @@ With this attribute you can check wheter the batteries of the corresponding Nuki
   nukiId = 50528385
   [[Change_Battery]]
     type = bool
-    nukiBatteryState = 50528385```
+    nukiBatteryState = 50528385
+```
