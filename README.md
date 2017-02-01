@@ -56,10 +56,10 @@ With this attribute you can check wheter the batteries of the corresponding Nuki
 * `true` : Batteries are low. Please replace as soon as possible.
 
 ### Example:
-
+```
 [Nuki_Smart_Lock]
   type = str
   nukiId = 50528385
   [[Change_Battery]]
     type = bool
-    nukiBatteryState = 50528385
+    nukiBatteryState = 50528385```
