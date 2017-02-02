@@ -27,7 +27,7 @@ You need a [Nuki Bridge](https://nuki.io/de/bridge/) which is already paired wit
 ## item.conf
 
 ### nukiId
-This attribute connects the related item with the correspondig Nuki Smart Lock. The status of Smart Lock is sent to this item  	respectively can be set via this item. 
+This attribute connects the related item with the correspondig Nuki Smart Lock. The status of Smart Lock is sent to this item  	respectively can be set via this item. Its type is `string`.
 
 #### Possible lock states:
 * uncalibrated
@@ -48,10 +48,10 @@ This attribute connects the related item with the correspondig Nuki Smart Lock. 
 * lock 'n' go
 * lock 'n' go with unlatch
 
-The nukiId can be figured out via the REST API of the Nuki Bridge (see API documentation) or by just (re)starting the smarthome.py server with the configured Nuki plugin. The name and the nukiId of all paired Nuki Locks will be written to the log file of smarthome.py.
+The `nukiId` can be figured out via the REST API of the Nuki Bridge (see API documentation) or by just (re)starting the smarthome.py server with the configured Nuki plugin. The `name` and the `nukiId` of all paired Nuki Locks will be written to the log file of smarthome.py.
 
 ### nukiBatteryState
-With this attribute you can check wheter the batteries of the corresponding Nuki Smart Lock have to be replaced or not. You have to assign the nukiId of the Smart Lock which battery you want to monitor. The return value type is `boolean`. 
+With this attribute you can check wheter the batteries of the corresponding Nuki Smart Lock has to be replaced or not. You have to assign the `nukiId` of the Smart Lock which battery you want to monitor. The return value type is `boolean`. 
 * `false` : Batteries are good. No need to replace it.
 * `true` : Batteries are low. Please replace as soon as possible.
 
@@ -60,7 +60,7 @@ With this attribute you can check wheter the batteries of the corresponding Nuki
 [Nuki_Smart_Lock]
   type = str
   nukiId = 50528385
-  [[Change_Battery]]
+  [[Battery_Alarm]]
     type = bool
     nukiBatteryState = 50528385
 ```
