@@ -24,6 +24,8 @@ You need a [Nuki Bridge](https://nuki.io/de/bridge/) which is already paired wit
 * `bridge_callback_ip`: IP address of the TCP dispatcher which is handling the Bridge callback requests. By default, the local IP address is used
 * `bridge_callback_port` : Port number of the TCP dispatcher. By default, port number 8090 is used.
 
+*This information can be set via the Nuki App
+
 ## item.conf
 
 ### nukiId
